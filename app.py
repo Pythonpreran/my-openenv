@@ -61,6 +61,10 @@ env = ICUDrugTitrationEnv()
 # =============================================================================
 
 
+@app.head("/")
+async def head_root():
+    return ""
+
 @app.get("/health", response_model=HealthResponse, tags=["System"])
 async def health_check():
     """Health check endpoint."""
