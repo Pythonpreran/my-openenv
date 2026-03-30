@@ -9,5 +9,9 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "pydantic",
-    "httpx"
+    "httpx",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "app:app"
