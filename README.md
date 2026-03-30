@@ -6,7 +6,7 @@ colorTo: red
 sdk: docker
 app_file: app.py
 pinned: false
-short_description: "ICU Drug Titration Environment - OpenEnv Benchmark for AI clinical decision-making"
+short_description: "ICU drug titration AI benchmark"
 ---
 
 # 🏥 ICU Drug Titration Environment
@@ -320,7 +320,5 @@ The built-in dark-themed ICU monitoring dashboard provides:
 ## 📄 License
 
 MIT License
-=======
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
