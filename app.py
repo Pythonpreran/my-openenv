@@ -73,7 +73,7 @@ async def health_check():
 
 @app.post("/reset", response_model=dict, tags=["Environment"])
 async def reset_environment(
-    request: ResetRequest,
+    request: Optional[ResetRequest] = None,
     session_id: Optional[str] = Query(None, description="Session ID (auto-generated if not provided)"),
 ):
     """
@@ -82,10 +82,18 @@ async def reset_environment(
     Returns the initial observation and session ID for subsequent calls.
     """
     try:
+        # ✅ FIX: handle missing body (OpenEnv requirement)
+        if request is None:
+            task_id = "easy"
+            seed = None
+        else:
+            task_id = request.task_id
+            seed = request.seed
+
         observation, sid = env.reset(
-            task_id=request.task_id,
+            task_id=task_id,
             session_id=session_id,
-            seed=request.seed,
+            seed=seed,
         )
         return {
             "observation": observation.model_dump(),
